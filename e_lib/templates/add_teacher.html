@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block element%}
+<style>
+    main{
+        min-height: 67vh;
+        background-color: azure;
+        padding: 10px;
+        border: 1px  solid rgb(156, 175, 187);
+    }
+    input[type="submit"]{
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        background-color: rgb(59, 202, 200);
+        width:80px;
+        font-weight: bold;
+    }
+        input[type="submit"]:hover{
+            background-color: rgb(2, 85, 144);
+            zoom: 110%;
+    }
+    .container1{
+        background-color: azure;
+        border: 1px  solid rgb(156, 175, 187);
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+        flex: 1;
+        min-height: 73vh;
+    }
+</style>
+<main class="container1">
+    {% if sudmitted%}
+        {% url 'reg_user' %}
+    {%else%}
+        <form action="" method="POST" enctype= "multipart/form-data">
+            {%csrf_token%}
+            {{ form.as_p }}
+        <input type="submit" value="Add">    
+        </form>
+    {%endif%}
+
+    
+ 
+</main>
+{% endblock %}

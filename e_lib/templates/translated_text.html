@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+
+<style>
+    .text-container {
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin: 10px;
+    }
+    .default-text {
+        background-color: #f0f0f0;
+    }
+    .translated-text {
+        background-color: #e0e0e0;
+    }
+</style>
+
+
+<div class="text-container default-text">
+    <h2>English Text:</h2>
+    <p>{{ defa }}</p>
+</div>
+
+<!-- Translated Text Container -->
+<div class="text-container translated-text">
+    <h2>Translated Text:</h2>
+    <p>{{ translated_text }}</p>
+</div>
+{% endblock %}

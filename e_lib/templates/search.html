@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+{% comment %} <h1>Search Project Gutenberg</h1> {% endcomment %}
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="book_title" placeholder="Enter the title of the book you want to search for">
+    <button type="submit">Search</button>
+</form>
+{% if no_results %}
+    <p>No results found on Project Gutenberg for this book.</p>
+{% endif %}
+{% endblock %}

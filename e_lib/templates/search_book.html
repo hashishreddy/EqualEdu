@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block element%}
+<style>
+    
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-left: 80px;
+        margin-top: 60px;
+        
+    }
+
+    .subject {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: calc(100%/6);
+        text-decoration: none;
+    }
+
+    .subject:hover {
+        transform: scale(1.05);
+        background-color: #f0f0f0;
+    }
+
+    .subject-image {
+        animation: fadeIn 0.5s ease;
+    }
+
+    .subject-name {
+        margin-top: 10px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .subject-container {
+        animation: fadeIn 1s ease;
+    }
+</style>
+
+{% if searched %}
+<h1>You Searched For {{ searched }}</h1>
+
+    <div class="subject-container">
+{% for Book in Books %}
+    {% if Book.books_name %}
+        
+            <a href="{% url 'book_detail' books_id=Book.books_id %}" class="subject">
+                <img src="{{ Book.book_img.url }}" alt="Book Image" class="subject-image" height="300px" width="200px">
+                <span class="subject-name">{{ Book.books_name }}</span>
+            </a>
+        
+    {% endif %}
+{% endfor %}
+</div>
+{% else %}
+<h1>Hey! You Forgot To Search For A Venue...</h1>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block element%}
+{% load static %}
+<style>
+    main{
+        background-color: azure;
+        padding: 10px;
+        border: 1px  solid rgb(156, 175, 187);
+    }
+    input[type="submit"]{
+        padding: 10px;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        background-color: rgb(59, 202, 200);
+        width:80px;
+        font-weight: bold;
+    }
+        input[type="submit"]:hover{
+            background-color: rgb(2, 85, 144);
+            zoom: 110%;
+    }
+    
+    #loginredirect{
+        font-size: large;
+        color: black;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .containerbutton{
+        display: flex;
+        align-items: center;
+        justify-content: center;    }
+    
+    .form {
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: white;
+    width: 30%;
+}
+.container1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.image {
+    /* flex: 1; */
+    /* padding: 200px; */
+    margin-left: 150px;
+}
+
+/* Style the form */
+.form {
+    /* flex: 1;  */
+    padding: 20px; 
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: white;
+    margin-right: 150px;
+}
+    
+        
+</style>
+{% if user.is_authenticated %}
+<main class=container1>
+    {% if sudmitted%}
+        your book was sumitted successfully
+
+    {%else%}
+    <div class="image">
+        
+        <img src="{% static 'add_book.jpeg' %}" alt="Image" height="690px" >
+    </div>
+    <div class= form>
+        <form action="" method="POST" enctype= "multipart/form-data" >
+            {%csrf_token%}
+            {{ form.as_p }}
+        <input type="submit" value="Add">    
+        </form>
+    </div>  
+    {%endif%}
+{%else%}
+<div class = container1>
+<h1 >Sorry!! You must be Logged in as <b>Teacher</b> to be able to access the content</h1>
+<div class = containerbutton>
+<button><a id = loginredirect href="{% url 'login' %}">Login</a></button>
+</div></div>
+
+{%endif%}
+
+    
+ 
+</main>
+{% endblock %}

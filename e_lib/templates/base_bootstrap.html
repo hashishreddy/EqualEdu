@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block element%}
+<style>
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Align subjects from the start of the container */
+        /* max-width: 800px; */
+        margin-left: 80px;
+        margin-top: 60px
+    }
+    
+    .subject {
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        display: inline-block; /* Display subjects side by side */
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: calc(100% / 5); /* Three subjects per row */
+        text-decoration: none; /* Remove underlining */
+    }
+    
+    .subject:hover {
+        transform: scale(1.05);
+        background-color: #f0f0f0;
+    }
+    
+    .subject-image {
+        max-height: 120px; /* Increased image size */
+        /* display: flex; */
+        
+        animation: fadeIn 0.5s ease;
+        /* align-items: center; */
+    }
+    
+    .subject-name {
+        margin-top: 10px;
+    }
+    
+    /* Add animation keyframes for additional effects */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Apply the animation to the container */
+    .subject-container {
+        animation: fadeIn 1s ease;}
+</style>
+
+<main >
+    <div class="subject-container">
+        <a href="mathematics.html" class="subject">
+            <img src="/static/maths.jpeg" alt="Mathematics" class="subject-image">
+            <span class="subject-name">Mathematics</span>
+        </a>
+        <a href="science.html" class="subject">
+            <img src="/static/physics.jpeg" alt="Science" class="subject-image">
+            <span class="subject-name">Physics</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/programming-language.webp" alt="History" class="subject-image">
+            <span class="subject-name">Programming Language</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/cyber.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">Cyber Security</span>
+        </a>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/AI.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">&nbsp&nbsp&nbsp&nbspArtificial intelligence</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/iot.png" alt="History" class="subject-image">
+            <span class="subject-name">Internet of things</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/digital design.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">Digital Design</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/business1.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">Business</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/coa1.webp" alt="History" class="subject-image">
+            <span class="subject-name">Computer Science And Architecture</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/operatingsystem.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">&nbsp&nbsp&nbsp&nbspOperating System</span>
+        </a>
+        <a href="history.html" class="subject">
+            <img src="/static/networking.jpeg" alt="History" class="subject-image">
+            <span class="subject-name">Networks</span>
+        </a>
+        <a href="history.html" class="subject">
+            
+            <span class="subject-name">ALL BOOKS</span>
+        </a>
+        
+        <!-- Add more subjects here -->
+    </div>
+    
+</main>
+{% endblock %}
+
+

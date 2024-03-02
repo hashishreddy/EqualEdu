@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+<style>
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Align subjects from the start of the container */
+        /* max-width: 800px; */
+        margin-left: 80px;
+        margin-top: 60px
+    }
+    
+    .subject {
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        display: inline-block; /* Display subjects side by side */
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: calc(100% / 5); /* Three subjects per row */
+        text-decoration: none; /* Remove underlining */
+    }
+    
+    .subject:hover {
+        transform: scale(1.05);
+        background-color: #f0f0f0;
+    }
+    
+    .subject-image {
+        max-height: 120px; /* Increased image size */
+        /* display: flex; */
+        
+        animation: fadeIn 0.5s ease;
+        /* align-items: center; */
+    }
+    
+    .subject-name {
+        margin-top: 10px;
+    }
+    
+    /* Add animation keyframes for additional effects */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Apply the animation to the container */
+    .subject-container {
+        animation: fadeIn 1s ease;}
+</style>
+
+<main>
+    <div class="subject-container">
+        {% for subject in subjects %}
+            <a href="{% url 'books_by_subject' subject_id=subject.subject_id %}" class="subject">
+                <img src="/static/subject_images/{{subject.subject_name}}.jpg" alt="{{ subject.subject_name }}" class="subject-image" height="120px" width="250px">
+                <span class="subject-name">{{ subject.subject_name }}</span>
+            </a>
+
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

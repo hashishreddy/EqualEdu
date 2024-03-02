@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+<h1>Search Results</h1>
+    <ul>
+        {% for result in search_results %}
+            <li>
+                <p>Title: {{ result.title }}</p>
+                <p>Link: <a href="{{ result.link }}" target="_blank">{{ result.link }}</a></p>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

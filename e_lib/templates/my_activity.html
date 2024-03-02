@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block element %}
+
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+
+    tr:hover {
+        background-color: #ececec;
+    }
+
+    h2 {
+        margin-top: 40px;
+    }
+</style>
+<h1>Welcome to Your Profile, {{ user.first_name }}!</h1>
+<h2>Viewed Books:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Viewed Book</th>
+            <th>Viewed At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for viewed_book in user.viewedbook_set.all %}
+        <tr>
+            <td>{{ viewed_book.book }}</td>
+            <td>{{ viewed_book.viewed_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Added Books:</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Added Book</th>
+            <th>Added At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        {% if book.added_by == user %}
+        <tr>
+            <td>{{ book.books_name }}</td>
+            <td>{{ book.added_at }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

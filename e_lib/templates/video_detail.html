@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+<style>
+    .subject-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Align subjects from the start of the container */
+        /* max-width: 800px; */
+        margin-left: 80px;
+        margin-top: 60px
+    }
+    
+    .subject {
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        text-align: center;
+        display: inline-block; /* Display subjects side by side */
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: calc(100% /6 ); /* Three subjects per row */
+        text-decoration: none; /* Remove underlining */
+    }
+    
+    .subject:hover {
+        transform: scale(1.05);
+        background-color: #f0f0f0;
+    }
+    
+    .subject-image {
+        
+        /* display: flex; */
+        
+        animation: fadeIn 0.5s ease;
+        /* align-items: center; */
+    }
+    
+    .subject-name {
+        margin-top: 10px;
+    }
+    
+    /* Add animation keyframes for additional effects */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Apply the animation to the container */
+    .subject-container {
+        animation: fadeIn 1s ease;}
+        .video-container {
+            max-width: 800px; /* You can adjust the maximum width as needed */
+            margin: 0 auto; /* Center the video container horizontally */
+        }
+
+        /* Style for the video player */
+        video {
+            width: 100%;
+            height: auto;
+        }
+</style>
+<body>
+    {% comment %} <h1>{{ video.title }}</h1> {% endcomment %}
+    <div class="video-container">
+    <video controls>
+        <source src="{{ video.video_file.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    {% comment %} <p>Added by: {{ video.added_by.first_name }}</p>
+    <p>Added at: {{ video.added_at }}</p> {% endcomment %}
+</div>
+<form method="post" action="{% url 'translate-text' %}">
+    {% csrf_token %}
+    <label for="language_select">Select a Language:</label>
+    <select name="language" id="language_select">
+        <option value="en">English</option>
+        <option value="ta">Tamil</option>
+        <option value="te">Telugu</option>
+        <option value="ml">Malayalam</option>
+        <option value="hi">Hindi</option>
+        <!-- Add more language options as needed -->
+    </select>
+    <button type="submit">Translate</button>
+</form>
+</body>
+
+</html>
+{% endblock %}

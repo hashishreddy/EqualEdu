@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block element%}
+<style>
+    .book-details {
+    margin-top: 50px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text content */
+}
+
+    
+    /* Style the book details header */
+    .book-details h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    /* Style the book image */
+    .book-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    
+    /* Style book information */
+    .book-details p {
+        font-size: 16px;
+        margin: 5px 0;
+        color: #666;
+    }
+    
+    /* Style the download link */
+    .book-details a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .book-details a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="book-details">
+    <h1>{{ book.books_name }} </h1>
+    <img src="{{ book.book_img.url }}" alt="{{ book.books_name }}" class="book-image" height = "400px" width = "200px">
+    <p>Author: {{ book.author }}</p>
+    <p>Added by: {{ book.added_by.first_name }}</p>
+    <a href="{% url 'view_pdf' book_id=book.books_id %}">OPEN PDF</a>
+    <br>
+    <a href="{% url 'summarize_pdf' book_id=book.books_id%}" class="btn btn-primary">Summarize PDF</a>
+
+</div>
+
+{% endblock %}
