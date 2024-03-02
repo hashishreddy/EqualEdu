@@ -36,4 +36,3 @@ EqualEdu enhances the learning experience by incorporating various media formats
 ## Conclusion
 
 EqualEdu is set to transform the educational landscape by offering a versatile platform that not only prioritizes the security and accessibility of educational content but also embraces the potential of AI and NLP technologies to enhance the learning experience. By breaking down language barriers and making learning materials more approachable, EqualEdu aims to empower students and educators worldwide with the tools they need for success in the digital age.
-# EqualEdu
